@@ -1,19 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
-function Form() {
+const Form = props => {
+    const [data, setData] = useState({ name: '', email: '', role: '' })
+    const handleChanges = e =>  setData({ ...data, [e.target.name]: e.target.value });
+
+
     return (
         <form>
-            <label for="name">Name</label>
-            <input type="text" name="name" />
+            <label htmlFor="name">Name</label>
+            <input type="text" name="name" value={data.name} onChange={handleChanges}/>
 
-            <label for="email">Email</label>
-            <input type="text" name="email" />
+            <label htmlFor="email">Email</label>
+            <input type="text" name="email" value={data.email} onChange={handleChanges}/>
 
-            <label for="role">Role</label>
-            <input type="text" name="role" />
+            <label htmlFor="role">Role</label>
+            <input type="text" name="role" value={data.role} onChange={handleChanges} />
+            
+            
+            
+            <button type="submit">Submit</button>
         </form>
     )
-}
+    }
 
 export default Form; 
