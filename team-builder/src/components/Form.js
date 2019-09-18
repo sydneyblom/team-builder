@@ -6,8 +6,15 @@ const Form = props => {
     const handleChanges = e =>  setData({ ...data, [e.target.name]: e.target.value });
 
 
+    const handleSubmit = event => {
+        event.preventDefault();
+        props.setTeam([{...props.team}, data]);
+    
+    }
+
+
     return (
-        <form>
+        <form onSubmit={event => handleSubmit(event)}>
             <label htmlFor="name">Name</label>
             <input type="text" name="name" value={data.name} onChange={handleChanges}/>
 
